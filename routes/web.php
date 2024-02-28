@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MyController;
+use App\Http\Controllers\FruitController;
+
+
+use App\Models\Fruit;
 
 
 /*
@@ -25,6 +29,14 @@ Route::get('/users', function () {
     return $result;
 });
 
+Route::get('/myview/{user}', function ($user) {
+    return view('home', ['username' => $user]);
+});
 
 
+Route::get('/fruits', function() {
+return Fruit::all();
+});
 
+
+Route::get('/showFruits', [FruitController::class, 'getFruits']);
